@@ -1,0 +1,166 @@
+<?php
+require "functions.php";
+require "mail.php";
+
+?>  
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\header_prototype_v0.1.css">
+    <link rel="stylesheet" href="css\pop.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Home</title>
+</head>
+<body>
+<!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP -->
+<div class="box"></div>
+    <div class="popup">
+    <h2>Get Started!</h2>
+    <button class="exit" type = submit onclick="closePopup()">X</button>
+    <p>You must be logged in to download the client</p>
+    <a href="login.php" class="button">Login</a>
+    <p>Don't have an account?</p>
+    <a href="Signup.php" class="button">Signup</a>
+</div>
+<!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP --><!--POPUP -->
+<!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER-->
+<div class="fixed-header">
+    <div class="container">
+        <a href="index.php"><i class="fas fa-chess"></i></a>
+        <div class="title">PLAYGROUND</div>
+        <nav class="button">    
+            <div class="dropdown">
+                <a href="#" class="button">Games</a>
+                <div class="dropdown-content">
+                    <a href="minecraft.php">Minecraft</a>
+                    <a href="newspageup.php">Valorant</a>
+                    <a href="grandtheftauto.php">GTA</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="button">Socials</a>
+                <div class="dropdown-content">
+                    <a href="https://www.facebook.com/SirJMPolicarpio">Facebook</a>
+                    <a href="https://www.youtube.com/watch?v=nogh434ykF0">Youtube</a>
+                </div>
+            </div>
+            <a href="update.php" class="button">Updates</a>
+            <a href="about.php" class="button">About Us</a>
+            <a href="support.php" class="button">Support</a>
+            <?php if (isset($_SESSION['USER']) && isset($_SESSION['LOGGED_IN'])): ?>
+                <div class="loggedIn">
+                    <a href="#" class="btnin">Profile</a>
+                    <div class="loggedIn-content">
+                        <a href="editprofile.php">Profile</a>
+                        <a href="logout.php">Logout</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="notlog">
+                    <a href="#" class="btnoff" id="playNow" onclick="openPopup()">Play Now</a>
+                </div>
+            <?php endif; ?>
+        </nav>
+    </div>
+</div>
+<!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER--><!--FIXED HEADER-->
+<!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY -->
+    <div class="MainImg">
+        <img id="image" src="texture/gta/gtaimage1.jpg">
+    </div>
+    <div class="wrapper">
+        <div class="shade"></div>
+        <div class="gta">PLAYGROUND</div>
+        <?php if (isset($_SESSION['USER']) && isset($_SESSION['LOGGED_IN'])): ?>
+            <div class="in">
+                <a href ="texture/download/prototype" class="log_ellipse"  download>Play Now</a>
+            </div>
+        <?php else: ?>
+            <div class="out">
+                <a href ="#" class="grow_ellipse" onclick="openPopup()">Play Now</a>
+            </div>
+        <?php endif; ?>
+
+
+        <div class="concave-block">
+        <h1 class="GAMES">Our Games</h1>
+        </div>
+    </div>
+    <div class="Games-block">
+        <a href="minecraft.php" class="button"  style="background-image: url('texture/buttons/minecraft.jpg');">Minecraft
+        <div class="shade1"></div></a>
+        <a href="grandtheftauto.php" class="button"  style="background-image: url('texture/buttons/gta.jpg');">Grand Theft Auto
+        <div class="shade2"></div></a>
+        <a href="newspageup.php" class="button"  style="background-image: url('texture/buttons/valorant.png');">Valorant
+        <div class="shade3"></div></a>
+        <h1 class="news">Latest News</h1>
+        <i class="fas fa-chess"></i>
+        <a class="fas fa-archive"></a>
+        <a href="newspageup.php" class="bg1">
+            <p class="newsbutton"  style="background-image: url('texture/buttons/valorant.png');"></p>
+            <p class ="valorant">Valorant</p>
+            <p class ="realeased">UPCOMINNG RELEASE</p>
+            <p class ="realease">This game is not yet available</p>
+            <p class ="realease1">Planned Release Date: Q4 2023</p>
+            <p class ="realease2">Interested? Click to view progress report.</p>
+        </a>
+        <a href="newspageupdate.php" class="bg2">
+            <p class="updatebutton"  style="background-image: url('texture/gta/gtaimage4.jpg');"></p>
+            <p class ="Gta">Grand Theft Auto</p>
+            <p class ="update">LATEST UPDATE</p>
+            <p class ="update1">The 1.8 update is out!</p>
+            <p class ="update2">New Weapons</p>
+            <p class ="update3">New Cars ...</p>
+            <p class ="update4">Click to learn more.</p>
+        </a>
+        <a href="newspagepatchfix.php" class="bg3">
+            <p class="patchnotes"  style="background-image: url('texture/buttons/minecraft.jpg');"></p>
+            <p class ="minecraft">Minecraft</p>
+            <p class ="patch">PATCH FIX</p>
+            <p class ="patch1">Patch 2.01</p>
+            <p class ="patch2">Fixed server</p>
+            <p class ="patch3">Fixed bg1 ...</p>
+            <p class ="patch4">Click to learn more.</p>
+        </a>
+        <e class="fas fa-chess"></e>
+        <h1 class ="welcome">Welcome to Playground</h1>
+        <p class ="comment">We are a passionate indie game development team dedicated to creating immersive gaming experiences. With a focus on quality and innovation, we proudly present our collection.
+            Discover and play the latest indie games from talented developers around the world. Immerse yourself in unique experiences, creative storytelling, and captivating gameplay.</p>
+    </div>
+<!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY --><!-- BODY -->
+    <div class="GamesEndBlock"></div>
+    <a href="texture/download/prototype" class="client"download>DOWNLOAD THE CLIENT</a>
+    <div class="socials">
+        <a href="https://www.facebook.com/SirJMPolicarpio" class="client"><i class='fab fa-facebook'></i></a>
+        <a href="https://www.youtube.com/watch?v=nogh434ykF0" class="client"><e class='fab fa-youtube'></e></a>
+        <a href="support.php" class="client"><f class="material-icons">mail</f></a>
+        <b class='fas fa-chess'></b>
+    </div>
+    <div class="registy">
+        <p><i class="fa fa-copyright"></i> 2015-2022 PLAYGROUND, ALL RIGHTS RESERVED</p>
+    </div>
+    <div class="endblock">
+        <a href="texture/download/cookie (1).png" class="gbutton" download>COOKIE</a>
+        <a href="about.php" class="gbutton">ABOUT US</a>
+        <a href="support.php" class="gbutton">SUPPORT</a>
+    </div>
+
+    <script>
+        let popup = document.querySelector(".popup");
+        let box = document.querySelector(".box");
+    function openPopup() {
+        popup.classList.add("open-popup");
+        box.style.visibility = "visible";
+    }
+    function closePopup() {
+        popup.classList.remove("open-popup");
+        box.style.visibility = "hidden";
+    }
+    </script>
+    <script src="css/script.js"></script>
+</body>
+</html>
